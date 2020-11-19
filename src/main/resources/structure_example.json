@@ -1,0 +1,37 @@
+[{
+  "address": {
+    "city": "Colorado Springs",
+    "state": "Colorado",
+    "street": "099 Algoma Terrace"
+  },
+  "email": "jlamberto17@smugmug.com",
+  "favorite": {
+    "animal": [
+      "Bald eagle",
+      "Galapagos tortoise"
+    ],
+    "color": "Blue"
+  },
+  "first_name": "Jenni",
+  "friends": {
+    "name": [
+      "Jenni Lamberto",
+      "Jenni Lamberto",
+      "Jenni Lamberto"
+    ]
+  },
+  "gender": "Female",
+  "id": 44,
+  "ip_address": "255.50.228.234",
+  "last_name": "Lamberto"
+},
+{
+"car": {
+"VIN": "KMHFH4JG6EA164372",
+"color": "Blue",
+"make": "Dodge",
+"model": "Dakota Club",
+"year": 1992
+},
+"id": 93
+}]
