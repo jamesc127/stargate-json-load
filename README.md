@@ -7,6 +7,6 @@ Stargate's document API enables users to use Apache Cassandra as a schemaless do
 3. Run the example program
 4. Import the HTTP requests into [Postman](https://www.postman.com/) and test!
 
-![Software Test](https://jmp.sh/FQJWCUR)
+![Software Test](gif/demo.gif)
 ### Contribution and Feedback
 The [Stargate community](https://stargate.io/community) needs you! Please consider contributing to the community, submitting feature requests, filing bugs, and developing your own API's!  
