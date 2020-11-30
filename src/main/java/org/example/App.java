@@ -12,7 +12,7 @@ public class App {
     public App() throws IOException, ParseException {
     }
     public static void main(String[] args) throws IOException, ParseException {
-        String astraDbId        = "aa1276b1-0295-48e7-ba46-8795f3cdd7dd"; //Astra database ID
+        String astraDbId        = "f82d3eb1-f99a-4111-bbd6-1bd594fbdfcd"; //Astra database ID
         String astraRegion      = "us-east1"; //Astra DB region
         String astraKeyspace    = "document"; //Astra DB keyspace
         String astraUser        = "james"; //Astra DB user name
@@ -45,7 +45,7 @@ public class App {
         json.forEach(obj -> {
             RequestBody jsonBody = RequestBody.create(obj.toString(),mediaType);
             Request request = new Request.Builder()
-                    .url("https://"+astraDbId+"-"+astraRegion+".apps.astra.datastax.com/api/rest/v2/namespaces/"+astraKeyspace+"/collections/json")
+                    .url("https://"+astraDbId+"-"+astraRegion+".apps.astra.datastax.com/api/rest/v2/namespaces/"+astraKeyspace+"/collections/demo_collection")
                     .method("POST", jsonBody)
                     .addHeader("X-Cassandra-Token", authToken)
                     .addHeader("Content-Type", "application/json")
@@ -63,7 +63,7 @@ public class App {
         carJson.forEach(obj -> {
             RequestBody carBody = RequestBody.create(obj.toString(),mediaType);
             Request request = new Request.Builder()
-                    .url("https://"+astraDbId+"-us-east1.apps.astra.datastax.com/api/rest/v2/namespaces/"+astraKeyspace+"/collections/json")
+                    .url("https://"+astraDbId+"-us-east1.apps.astra.datastax.com/api/rest/v2/namespaces/"+astraKeyspace+"/collections/demo_collection")
                     .method("POST", carBody)
                     .addHeader("X-Cassandra-Token", authToken)
                     .addHeader("Content-Type", "application/json")

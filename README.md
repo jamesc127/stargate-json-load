@@ -6,5 +6,7 @@ Stargate's document API enables users to use Apache Cassandra as a schemaless do
 2. Put your database UUID, cloud region, user name, password, and keyspace name into the [java variables](./src/main/java/org/example/App.java)
 3. Run the example program
 4. Import the HTTP requests into [Postman](https://www.postman.com/) and test!
+
+![Software Test](https://jmp.sh/FQJWCUR)
 ### Contribution and Feedback
 The [Stargate community](https://stargate.io/community) needs you! Please consider contributing to the community, submitting feature requests, filing bugs, and developing your own API's!  
