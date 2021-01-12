@@ -12,9 +12,10 @@ public class App {
     public App() throws IOException, ParseException {
     }
     public static void main(String[] args) throws IOException, ParseException {
-        String astraDbId        = "f82d3eb1-f99a-4111-bbd6-1bd594fbdfcd"; //Astra database ID
+        String astraDbId        = "cfb7ddd9-cdf2-4461-9eb8-da9085fe557d"; //Astra database ID
         String astraRegion      = "us-east1"; //Astra DB region
-        String astraKeyspace    = "document"; //Astra DB keyspace
+        String astraKeyspace    = "astra_demo"; //Astra DB keyspace
+        String astraCollection  = "astra_document_demo"; //Astra collection to create
         String astraUser        = "james"; //Astra DB user name
         String astraPassword    = "SuperSecret"; //Astra DB password
 
@@ -45,7 +46,8 @@ public class App {
         json.forEach(obj -> {
             RequestBody jsonBody = RequestBody.create(obj.toString(),mediaType);
             Request request = new Request.Builder()
-                    .url("https://"+astraDbId+"-"+astraRegion+".apps.astra.datastax.com/api/rest/v2/namespaces/"+astraKeyspace+"/collections/demo_collection")
+                    .url("https://"+astraDbId+"-"+astraRegion+".apps.astra.datastax.com/api/rest/v2/namespaces/"+astraKeyspace
+                            +"/collections/"+astraCollection)
                     .method("POST", jsonBody)
                     .addHeader("X-Cassandra-Token", authToken)
                     .addHeader("Content-Type", "application/json")
@@ -63,7 +65,8 @@ public class App {
         carJson.forEach(obj -> {
             RequestBody carBody = RequestBody.create(obj.toString(),mediaType);
             Request request = new Request.Builder()
-                    .url("https://"+astraDbId+"-us-east1.apps.astra.datastax.com/api/rest/v2/namespaces/"+astraKeyspace+"/collections/demo_collection")
+                    .url("https://"+astraDbId+"-us-east1.apps.astra.datastax.com/api/rest/v2/namespaces/"+astraKeyspace
+                            +"/collections/"+astraCollection)
                     .method("POST", carBody)
                     .addHeader("X-Cassandra-Token", authToken)
                     .addHeader("Content-Type", "application/json")
