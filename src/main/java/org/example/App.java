@@ -12,33 +12,17 @@ public class App {
     public App() throws IOException, ParseException {
     }
     public static void main(String[] args) throws IOException, ParseException {
-        String astraDbId        = "cfb7ddd9-cdf2-4461-9eb8-da9085fe557d"; //Astra database ID
+        String astraDbId        = ""; //Astra database ID
         String astraRegion      = "us-east1"; //Astra DB region
-        String astraKeyspace    = "astra_demo"; //Astra DB keyspace
-        String astraCollection  = "astra_document_demo"; //Astra collection to create
-        String astraUser        = "james"; //Astra DB user name
-        String astraPassword    = "SuperSecret"; //Astra DB password
+        String astraKeyspace    = ""; //Astra DB keyspace
+        String astraCollection  = "something_interesting"; //Astra collection (think of it like a table) to create
+        String astraAppToken    = ""; //App token
 
         //Set up HTTP client
         OkHttpClient client = new OkHttpClient().newBuilder().readTimeout(30, TimeUnit.SECONDS).build();
         MediaType mediaType = MediaType.parse("application/json");
-
-        //Use the user name and password to request an auth token
-        RequestBody authBody = RequestBody.create(
-                "{\"username\": \""+astraUser+"\",\"password\": \""+astraPassword+"\"}",mediaType
-        );
-        //HTTP POST to request the token
-        Request authRequest = new Request.Builder()
-                .url("https://"+astraDbId+"-"+astraRegion+".apps.astra.datastax.com/api/rest/v1/auth")
-                .method("POST", authBody)
-                .addHeader("Content-Type", "application/json")
-                .build();
-        Response authResponse = client.newCall(authRequest).execute();
-        String authTokenString = Objects.requireNonNull(authResponse.body()).string();
         JSONParser jsonParser = new JSONParser();
-        JSONObject authTokenObj = (JSONObject) jsonParser.parse(authTokenString);
-        //Grab the token from the JSON object
-        String authToken = authTokenObj.get("authToken").toString();
+
         //Read JSON data from file and create an array
         JSONArray json = (JSONArray) jsonParser.parse(new FileReader("./src/main/resources/MOCK_DATA.json"));
 
@@ -46,10 +30,11 @@ public class App {
         json.forEach(obj -> {
             RequestBody jsonBody = RequestBody.create(obj.toString(),mediaType);
             Request request = new Request.Builder()
-                    .url("https://"+astraDbId+"-"+astraRegion+".apps.astra.datastax.com/api/rest/v2/namespaces/"+astraKeyspace
+                    .url("https://"+astraDbId+"-"+astraRegion+".apps.astra.datastax.com/api/rest/v2/namespaces/"
+                            +astraKeyspace
                             +"/collections/"+astraCollection)
                     .method("POST", jsonBody)
-                    .addHeader("X-Cassandra-Token", authToken)
+                    .addHeader("X-Cassandra-Token", astraAppToken)
                     .addHeader("Content-Type", "application/json")
                     .build();
             try {
@@ -65,10 +50,11 @@ public class App {
         carJson.forEach(obj -> {
             RequestBody carBody = RequestBody.create(obj.toString(),mediaType);
             Request request = new Request.Builder()
-                    .url("https://"+astraDbId+"-us-east1.apps.astra.datastax.com/api/rest/v2/namespaces/"+astraKeyspace
+                    .url("https://"+astraDbId+"-us-east1.apps.astra.datastax.com/api/rest/v2/namespaces/"
+                            +astraKeyspace
                             +"/collections/"+astraCollection)
                     .method("POST", carBody)
-                    .addHeader("X-Cassandra-Token", authToken)
+                    .addHeader("X-Cassandra-Token", astraAppToken)
                     .addHeader("Content-Type", "application/json")
                     .build();
             try {

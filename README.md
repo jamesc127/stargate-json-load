@@ -6,10 +6,11 @@ Stargate's document API enables users to use Apache Cassandra as a schemaless do
 Create a table and load `JSON` data completely schemaless! On Apache Cassandra! 
 You can use this demo to illustrate loading `JSON` data of differing shapes and depths into the same "table" and query on a common (or not common) attribute! 
 ### Get Started!
-1. Create an Astra Free Tier database on GCP
-2. Put your database UUID, cloud region, user name, password, and keyspace name into the [java variables](./src/main/java/org/example/App.java)
-3. Run the example program
-4. Import the HTTP requests into [Postman](https://www.postman.com/) and test!
+1. Create an Astra Serverless database
+2. Create an [Application Token](https://docs.datastax.com/en/astra/docs/manage-application-tokens.html) for your database to use in authentication.
+3. Put your database UUID, cloud region, application token, and keyspace name into the [java variables](./src/main/java/org/example/App.java)
+4. Run the example program
+5. Import the [HTTP requests](postman) into [Postman](https://www.postman.com/) and test!
 
 ![Software Test](gif/demo.gif)
 
