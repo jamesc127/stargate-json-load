@@ -12,11 +12,11 @@ public class App {
     public App() throws IOException, ParseException {
     }
     public static void main(String[] args) throws IOException, ParseException {
-        String astraDbId        = ""; //Astra database ID
+        String astraDbId        = "917577ef-6ecb-40d8-98a7-518ba67c8b16"; //Astra database ID
         String astraRegion      = "us-east1"; //Astra DB region
-        String astraKeyspace    = ""; //Astra DB keyspace
+        String astraKeyspace    = "document"; //Astra DB keyspace
         String astraCollection  = "something_interesting"; //Astra collection (think of it like a table) to create
-        String astraAppToken    = ""; //App token
+        String astraAppToken    = "AstraCS:oupaxOmkdGRARIQcDjgCOiZN:96b915e7aad080f21cb46b6967d1296e2bd7c2ead436078695e3f7c650a85828"; //App token
 
         //Set up HTTP client
         OkHttpClient client = new OkHttpClient().newBuilder().readTimeout(30, TimeUnit.SECONDS).build();
