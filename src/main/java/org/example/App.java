@@ -12,11 +12,11 @@ public class App {
     public App() throws IOException, ParseException {
     }
     public static void main(String[] args) throws IOException, ParseException {
-        String astraDbId        = "917577ef-6ecb-40d8-98a7-518ba67c8b16"; //Astra database ID
-        String astraRegion      = "us-east1"; //Astra DB region
-        String astraKeyspace    = "document"; //Astra DB keyspace
-        String astraCollection  = "something_interesting"; //Astra collection (think of it like a table) to create
-        String astraAppToken    = "AstraCS:oupaxOmkdGRARIQcDjgCOiZN:96b915e7aad080f21cb46b6967d1296e2bd7c2ead436078695e3f7c650a85828"; //App token
+        String astraDbId        = ""; //Astra database ID
+        String astraRegion      = ""; //Astra DB region
+        String astraKeyspace    = ""; //Astra DB keyspace
+        String astraCollection  = ""; //Astra collection (think of it like a table) to create
+        String astraAppToken    = ""; //App token
 
         //Set up HTTP client
         OkHttpClient client = new OkHttpClient().newBuilder().readTimeout(30, TimeUnit.SECONDS).build();
@@ -26,6 +26,7 @@ public class App {
         //Read JSON data from file and create an array
         JSONArray json = (JSONArray) jsonParser.parse(new FileReader("./src/main/resources/MOCK_DATA.json"));
 
+        long StartTime = System.currentTimeMillis();
         //For each item in the array, load the document into Astra
         json.forEach(obj -> {
             RequestBody jsonBody = RequestBody.create(obj.toString(),mediaType);
@@ -64,5 +65,8 @@ public class App {
                 e.printStackTrace();
             }
         });
+        long EndTime = System.currentTimeMillis();
+        long TotalTime = (EndTime - StartTime)/1000;
+        System.out.println("Total time to load JSON documents was "+TotalTime+" seconds.");
     }
 }
